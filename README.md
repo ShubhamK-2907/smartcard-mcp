@@ -7,7 +7,7 @@
   <img src="https://img.shields.io/badge/MCP%20SDK-2.x-7C3AED" alt="MCP SDK 2.x">
   <img src="https://img.shields.io/badge/storage-SQLite-003B57?logo=sqlite&logoColor=white" alt="SQLite">
   <img src="https://img.shields.io/badge/tests-pytest-0A9EDC?logo=pytest&logoColor=white" alt="pytest">
-  <img src="https://img.shields.io/badge/license-MIT-22C55E" alt="MIT License">
+  <img src="https://img.shields.io/badge/license-PolyForm%20Strict%201.0.0-EF4444" alt="PolyForm Strict 1.0.0">
 </p>
 
 # SmartCard
@@ -165,4 +165,14 @@ Also: the resource `smartcard://categories` and the prompt `set_up_card`.
 
 ## License
 
-MIT, see [LICENSE](LICENSE).
+SmartCard is **source-available** under the [PolyForm Strict License 1.0.0](LICENSE).
+
+| | Allowed? |
+|---|---|
+| Read the code and run it for personal, study, research or other noncommercial use | ✅ Yes |
+| Use it in a commercial product or service, or inside a business | ❌ No |
+| Modify it, fork it into a new work, or redistribute it | ❌ No |
+
+For commercial licensing or any use not covered above, open an issue on this repository to contact the author.
+
+Copyright © 2026 Shubham Kumar Sahoo. All rights not expressly granted are reserved.

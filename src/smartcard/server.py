@@ -1,3 +1,4 @@
+# Copyright (c) 2026 Shubham Kumar Sahoo. Licensed under the PolyForm Strict License 1.0.0 (see LICENSE).
 """SmartCard MCP server: exposes the Wallet as MCP tools, a resource and a prompt."""
 
 import functools

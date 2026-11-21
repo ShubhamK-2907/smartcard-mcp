@@ -1,3 +1,4 @@
+# Copyright (c) 2026 Shubham Kumar Sahoo. Licensed under the PolyForm Strict License 1.0.0 (see LICENSE).
 """Plain data objects passed between the database, the rewards maths and the server."""
 
 from dataclasses import dataclass

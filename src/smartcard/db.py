@@ -1,3 +1,4 @@
+# Copyright (c) 2026 Shubham Kumar Sahoo. Licensed under the PolyForm Strict License 1.0.0 (see LICENSE).
 """SQLite storage: connection, schema and row mapping."""
 
 import json

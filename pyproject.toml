@@ -3,7 +3,7 @@ name = "smartcard"
 version = "0.1.0"
 description = "SmartCard: an MCP server that tells you which credit card to swipe"
 readme = "README.md"
-license = "MIT"
+license = "LicenseRef-PolyForm-Strict-1.0.0"
 license-files = ["LICENSE"]
 authors = [{ name = "Shubham Kumar Sahoo" }]
 requires-python = ">=3.12"

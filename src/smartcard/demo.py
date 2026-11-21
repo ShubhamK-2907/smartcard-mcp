@@ -1,3 +1,4 @@
+# Copyright (c) 2026 Shubham Kumar Sahoo. Licensed under the PolyForm Strict License 1.0.0 (see LICENSE).
 """Load a small fictional wallet so SmartCard can be tried without real card data.
 
 Usage:  smartcard-demo            (uses $SMARTCARD_DB or ~/.smartcard/smartcard.db)

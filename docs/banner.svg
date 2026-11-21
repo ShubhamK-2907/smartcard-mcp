@@ -52,8 +52,8 @@
     <text x="324" y="304" text-anchor="middle">Python 3.12</text>
     <rect x="386" y="284" width="76" height="30" rx="15" fill="#ffffff" fill-opacity="0.06" stroke="#475569"/>
     <text x="424" y="304" text-anchor="middle">SQLite</text>
-    <rect x="472" y="284" width="104" height="30" rx="15" fill="#ffffff" fill-opacity="0.06" stroke="#475569"/>
-    <text x="524" y="304" text-anchor="middle">MIT License</text>
+    <rect x="472" y="284" width="140" height="30" rx="15" fill="#ffffff" fill-opacity="0.06" stroke="#475569"/>
+    <text x="542" y="304" text-anchor="middle">Source-available</text>
   </g>
 
   <!-- card stack -->

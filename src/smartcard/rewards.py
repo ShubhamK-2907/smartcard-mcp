@@ -1,3 +1,4 @@
+# Copyright (c) 2026 Shubham Kumar Sahoo. Licensed under the PolyForm Strict License 1.0.0 (see LICENSE).
 """Reward maths. Pure functions: no database, no I/O, easy to test."""
 
 import math

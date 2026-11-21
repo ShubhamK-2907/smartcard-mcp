@@ -1,3 +1,4 @@
+# Copyright (c) 2026 Shubham Kumar Sahoo. Licensed under the PolyForm Strict License 1.0.0 (see LICENSE).
 """The Wallet: every SmartCard operation, on top of SQLite.
 
 The MCP server is a thin layer over this class, so everything here can be
