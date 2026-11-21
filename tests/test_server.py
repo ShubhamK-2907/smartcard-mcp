@@ -36,9 +36,9 @@ async def test_lists_tools_resource_and_prompt(fresh_wallet):
 
 async def test_add_card_recommend_and_log(fresh_wallet):
     async with Client(server.mcp) as session:
-        await call(session, "add_card", name="Daily Cash", issuer="Bank",
+        await call(session, "add_card", confirmed=True, name="Daily Cash", issuer="Bank",
                    reward_kind="cashback", base_rate=1)
-        await call(session, "add_card", name="Food Points", issuer="Bank",
+        await call(session, "add_card", confirmed=True, name="Food Points", issuer="Bank",
                    reward_kind="points", base_rate=2, unit_value_inr=0.25)
         await call(session, "add_earn_rate", card="Food Points", rate=40, merchant="Swiggy")
 
@@ -55,9 +55,22 @@ async def test_add_card_recommend_and_log(fresh_wallet):
         assert logged["better_option"]["missed_inr"] == 90
 
 
+async def test_add_card_previews_until_confirmed(fresh_wallet):
+    async with Client(server.mcp) as session:
+        preview = await call(session, "add_card", name="New Card", issuer="Bank",
+                             reward_kind="cashback", base_rate=1)
+        assert preview["saved"] is False
+        assert preview["proposed"]["base_earning"] == "1 ₹ cashback per ₹100"
+        assert (await call(session, "list_cards"))["count"] == 0
+        saved = await call(session, "add_card", name="New Card", issuer="Bank",
+                           reward_kind="cashback", base_rate=1, confirmed=True)
+        assert saved["added"]["name"] == "New Card"
+        assert (await call(session, "list_cards"))["count"] == 1
+
+
 async def test_remove_card_needs_confirmation(fresh_wallet):
     async with Client(server.mcp) as session:
-        await call(session, "add_card", name="Old Card", issuer="Bank",
+        await call(session, "add_card", confirmed=True, name="Old Card", issuer="Bank",
                    reward_kind="cashback", base_rate=1)
         preview = await call(session, "remove_card", card="Old Card")
         assert preview["deleted"] is False

@@ -209,9 +209,38 @@ def add_card(
                           + ", ".join(sorted(c.value for c in DEFAULT_EXCLUSIONS))),
     ] = None,
     notes: Annotated[str | None, Field(description="Fees, perks, anything worth remembering")] = None,
+    confirmed: Annotated[
+        bool,
+        Field(description="Set true only after the user has seen and agreed to these terms. "
+                          "Without it the card is previewed, not saved."),
+    ] = False,
 ) -> dict[str, Any]:
-    """Add a credit card to the wallet. Follow up with add_earn_rate for each category
-    or merchant where the card earns more than its base rate."""
+    """Add a credit card to the wallet, then call add_earn_rate for each category or
+    merchant where it earns more than its base rate.
+
+    Wrong terms silently skew every later recommendation, so saving needs the user's
+    agreement: call once without `confirmed` to get a preview, show it to the user
+    (including anything found with search_card_terms and their statement day), and
+    call again with confirmed=true only after they agree."""
+    if not confirmed:
+        unit = "points" if reward_kind == "points" else "₹ cashback"
+        return {
+            "saved": False,
+            "proposed": {
+                "name": name, "issuer": issuer, "network": network,
+                "reward_kind": reward_kind,
+                "base_earning": f"{base_rate:g} {unit} per ₹{block_inr:g}",
+                "unit_value_inr": unit_value_inr if unit_value_inr is not None
+                else (1.0 if reward_kind == "cashback" else None),
+                "statement_day": statement_day,
+                "excluded_categories": sorted(excluded_categories)
+                if excluded_categories is not None
+                else sorted(c.value for c in DEFAULT_EXCLUSIONS),
+                "notes": notes,
+            },
+            "next_step": "Show these terms to the user. Call again with confirmed=true "
+                         "once they agree, or with corrected values.",
+        }
     c = get_wallet().add_card(
         name=name, issuer=issuer, reward_kind=reward_kind, base_rate=base_rate,
         block_inr=block_inr, unit_value_inr=unit_value_inr, statement_day=statement_day,
@@ -291,7 +320,7 @@ def add_earn_rate(
 ) -> dict[str, Any]:
     """Add an accelerated reward rate to a card for a category, a merchant, or both.
     When several rates match a purchase, the most specific one wins
-    (merchant beats category)."""
+    (merchant beats category). Only add rates the user has confirmed."""
     wallet = get_wallet()
     r = wallet.add_rate(card, rate=rate, category=category, merchant=merchant,
                         channel=channel, monthly_cap=monthly_cap, label=label)
