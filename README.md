@@ -10,13 +10,13 @@
   <img src="https://img.shields.io/badge/license-PolyForm%20Strict%201.0.0-EF4444" alt="PolyForm Strict 1.0.0">
 </p>
 
-# SmartCard
+# SmartCard: Credit Card Rewards MCP Server
 
-An MCP server that tells you which credit card to swipe.
+**SmartCard** is a Model Context Protocol (MCP) server that recommends the best credit card for every purchase. It tracks reward rates, monthly caps and cashback across your cards, so AI assistants like Claude Code and Claude Desktop can tell you which card to swipe.
 
 Connect SmartCard to an AI assistant (Claude Desktop, Claude Code or any MCP client) and ask things like *"Which card for ₹5,000 on Amazon?"*. The assistant calls SmartCard's tools, which know your cards, their reward rates, monthly caps and what you have already spent this cycle, and it answers with the card that gives the most back.
 
-## Features
+## Features of the credit card recommendation server
 
 - **Recommendations**: ranks every card by the rupee value it returns on a purchase, including how much of each monthly cap you've already used.
 - **Purchase log**: records spends, calculates the rewards earned, and flags when another card would have earned more.

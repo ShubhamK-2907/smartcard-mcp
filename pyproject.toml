@@ -6,11 +6,17 @@ readme = "README.md"
 license = "LicenseRef-PolyForm-Strict-1.0.0"
 license-files = ["LICENSE"]
 authors = [{ name = "Shubham Kumar Sahoo" }]
+keywords = ["mcp", "mcp-server", "model-context-protocol", "claude", "credit-card", "credit-card-rewards", "cashback", "fintech", "india"]
+
 requires-python = ">=3.12"
 dependencies = [
     "mcp[cli]>=2.3,<3",
     "ddgs>=9.0.0",
 ]
+
+[project.urls]
+Homepage = "https://github.com/ShubhamK-2907/smartcard"
+Repository = "https://github.com/ShubhamK-2907/smartcard"
 
 [project.scripts]
 smartcard = "smartcard.server:main"
