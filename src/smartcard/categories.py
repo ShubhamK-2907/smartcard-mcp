@@ -23,17 +23,17 @@ class Category(StrEnum):
 
 
 DESCRIPTIONS: dict[Category, str] = {
-    Category.DINING: "Restaurants, cafes and food delivery",
+    Category.DINING: "Eating out, takeaway and meal-delivery orders",
     Category.GROCERIES: "Supermarkets and quick-commerce grocery apps",
     Category.SHOPPING: "Retail, apparel, electronics, online marketplaces",
     Category.TRAVEL: "Flights, hotels, trains, cabs and travel portals",
-    Category.FUEL: "Petrol pumps and EV charging",
+    Category.FUEL: "Filling stations and vehicle charging points",
     Category.ENTERTAINMENT: "Movies, events and streaming subscriptions",
-    Category.UTILITIES: "Electricity, water and gas bills",
-    Category.TELECOM: "Mobile, broadband and DTH recharges",
-    Category.HEALTH: "Pharmacies, hospitals and diagnostics",
+    Category.UTILITIES: "Monthly household bills for power and water",
+    Category.TELECOM: "Phone plans, home internet and TV subscriptions",
+    Category.HEALTH: "Medicines, clinic visits and lab tests",
     Category.EDUCATION: "School and college fees, courses",
-    Category.INSURANCE: "Insurance premiums",
+    Category.INSURANCE: "Policy payments and renewals",
     Category.RENT: "Rent paid by card",
     Category.WALLET: "Loading prepaid wallets",
     Category.GOVERNMENT: "Taxes and government payments",
