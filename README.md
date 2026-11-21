@@ -99,8 +99,8 @@ Each card earns `base_rate` units for every `block_inr` rupees spent:
 Requires Python 3.12+ and [uv](https://docs.astral.sh/uv/).
 
 ```bash
-git clone https://github.com/ShubhamK-2907/smartcard.git
-cd smartcard
+git clone https://github.com/ShubhamK-2907/smartcard-mcp.git
+cd smartcard-mcp
 uv sync
 uv run pytest                 # run the tests
 uv run smartcard-demo         # optional: load three fictional cards to try it out

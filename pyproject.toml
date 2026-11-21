@@ -15,8 +15,8 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/ShubhamK-2907/smartcard"
-Repository = "https://github.com/ShubhamK-2907/smartcard"
+Homepage = "https://github.com/ShubhamK-2907/smartcard-mcp"
+Repository = "https://github.com/ShubhamK-2907/smartcard-mcp"
 
 [project.scripts]
 smartcard = "smartcard.server:main"
