@@ -1,3 +1,15 @@
+<p align="center">
+  <img src="docs/banner.svg" alt="SmartCard: an MCP server that ranks your credit cards for every purchase" width="100%">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/python-3.12+-3776AB?logo=python&logoColor=white" alt="Python 3.12+">
+  <img src="https://img.shields.io/badge/MCP%20SDK-2.x-7C3AED" alt="MCP SDK 2.x">
+  <img src="https://img.shields.io/badge/storage-SQLite-003B57?logo=sqlite&logoColor=white" alt="SQLite">
+  <img src="https://img.shields.io/badge/tests-pytest-0A9EDC?logo=pytest&logoColor=white" alt="pytest">
+  <img src="https://img.shields.io/badge/license-MIT-22C55E" alt="MIT License">
+</p>
+
 # SmartCard
 
 An MCP server that tells you which credit card to swipe.
@@ -14,14 +26,52 @@ Built by **Shubham Kumar Sahoo**.
 - **Spending report**: spend and reward return by category and by card.
 - **Card setup help**: a web search tool and a guided prompt for entering a new card's reward terms.
 
-## How it works
+## Architecture
 
+### High-level design
+
+<p align="center">
+  <img src="docs/architecture.svg" alt="SmartCard high-level design: MCP host, SmartCard MCP server layers, SQLite and web search" width="100%">
+</p>
+
+The AI assistant (the **MCP host**) launches SmartCard as a subprocess and talks to it over **stdio** using the Model Context Protocol. Inside the server, each layer depends only on the one below it:
+
+1. **Interface** (`server.py`): 15 tools, 1 resource and 1 prompt with validated inputs and tool annotations.
+2. **Service** (`wallet.py`): every business operation, usable and testable without MCP.
+3. **Engines** (`rewards.py`, `categories.py`): pure reward maths and category intelligence, with no I/O.
+4. **Storage** (`db.py`): a single local SQLite file.
+
+The only network call is the optional `search_card_terms` web lookup.
+
+### Request flow
+
+What happens when you ask *"Which card for ₹2,400 on Swiggy?"*:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as User
+    participant H as MCP host<br/>(Claude Code / Desktop)
+    participant S as server.py<br/>MCP interface
+    participant W as wallet.py<br/>Wallet service
+    participant R as rewards.py<br/>Rewards engine
+    participant D as SQLite
+    U->>H: "Which card for ₹2,400 on Swiggy?"
+    H->>S: tools/call recommend_card(amount=2400, merchant="Swiggy", channel="online")
+    S->>W: recommend(...)
+    W->>W: resolve category (Swiggy → dining)
+    loop every card in the wallet
+        W->>D: earn rates + cap usage this statement cycle
+        D-->>W: rows
+        W->>R: compute_earning(card, rates, cap_used)
+        R-->>W: units, ₹ value, explanation
+    end
+    W-->>S: ranking, best first
+    S-->>H: structured JSON result
+    H-->>U: "Use Demo Foodie: 960 points = ₹240 back (10%)"
 ```
- You ──► AI assistant ──(MCP over stdio)──► SmartCard server ──► Wallet ──► SQLite
-                                               server.py         wallet.py   db.py
-                                                                    │
-                                                              rewards.py (pure maths)
-```
+
+### Modules
 
 | Module | Role |
 |---|---|
@@ -51,6 +101,8 @@ Each card earns `base_rate` units for every `block_inr` rupees spent:
 Requires Python 3.12+ and [uv](https://docs.astral.sh/uv/).
 
 ```bash
+git clone https://github.com/ShubhamK-2907/smartcard.git
+cd smartcard
 uv sync
 uv run pytest                 # run the tests
 uv run smartcard-demo         # optional: load three fictional cards to try it out
