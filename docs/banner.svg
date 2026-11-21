@@ -55,7 +55,6 @@
     <rect x="472" y="284" width="104" height="30" rx="15" fill="#ffffff" fill-opacity="0.06" stroke="#475569"/>
     <text x="524" y="304" text-anchor="middle">MIT License</text>
   </g>
-  <text x="76" y="340" font-size="12.5" fill="#64748b">Built by Shubham Kumar Sahoo</text>
 
   <!-- card stack -->
   <g transform="translate(860 70) rotate(-12)">

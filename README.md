@@ -16,8 +16,6 @@ An MCP server that tells you which credit card to swipe.
 
 Connect SmartCard to an AI assistant (Claude Desktop, Claude Code or any MCP client) and ask things like *"Which card for ₹5,000 on Amazon?"*. The assistant calls SmartCard's tools, which know your cards, their reward rates, monthly caps and what you have already spent this cycle, and it answers with the card that gives the most back.
 
-Built by **Shubham Kumar Sahoo**.
-
 ## Features
 
 - **Recommendations**: ranks every card by the rupee value it returns on a purchase, including how much of each monthly cap you've already used.
