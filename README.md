@@ -110,7 +110,15 @@ Data is stored in `~/.smartcard/smartcard.db`. Set `SMARTCARD_DB` to use another
 
 ## Connect to an AI assistant
 
-**Claude Code**
+**Claude Code plugin (easiest).** Installs the MCP server and the SmartCard skill, which teaches the agent when and how to use each tool:
+
+```
+/plugin install smartcard --marketplace ShubhamK-2907/smartcard-mcp
+```
+
+On older Claude Code versions, run `/plugin marketplace add ShubhamK-2907/smartcard-mcp` and then `/plugin install smartcard@smartcard`. Requires [uv](https://docs.astral.sh/uv/).
+
+**Claude Code (MCP server only)**
 
 ```bash
 claude mcp add smartcard -- uv --directory /absolute/path/to/smartcard run smartcard

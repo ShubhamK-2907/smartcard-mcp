@@ -1,0 +1,18 @@
+{
+  "name": "smartcard",
+  "owner": {
+    "name": "Shubham Kumar Sahoo",
+    "url": "https://github.com/ShubhamK-2907"
+  },
+  "metadata": {
+    "description": "SmartCard: pick the best credit card for every purchase."
+  },
+  "plugins": [
+    {
+      "name": "smartcard",
+      "source": "./",
+      "description": "SmartCard MCP server plus a skill for choosing the best credit card, logging spends and tracking rewards.",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "name": "smartcard",
+  "version": "0.1.0",
+  "description": "Pick the best credit card for every purchase. Bundles the SmartCard MCP server (rewards, monthly caps, cashback, spending reports) with a skill that tells the agent when and how to use it.",
+  "author": {
+    "name": "Shubham Kumar Sahoo",
+    "url": "https://github.com/ShubhamK-2907"
+  },
+  "homepage": "https://github.com/ShubhamK-2907/smartcard-mcp",
+  "repository": "https://github.com/ShubhamK-2907/smartcard-mcp",
+  "license": "LicenseRef-PolyForm-Strict-1.0.0",
+  "keywords": ["mcp", "credit-card", "rewards", "cashback", "fintech", "india"],
+  "icon": ".claude-plugin/icon.png",
+  "network": {
+    "hosts": [
+      "duckduckgo.com",
+      "html.duckduckgo.com",
+      "www.bing.com",
+      "search.brave.com",
+      "www.google.com",
+      "www.mojeek.com",
+      "search.yahoo.com",
+      "yandex.com",
+      "*.wikipedia.org",
+      "grokipedia.com",
+      "www.startpage.com"
+    ]
+  },
+  "mcpServers": {
+    "smartcard": {
+      "command": "uv",
+      "args": ["--directory", "${CLAUDE_PLUGIN_ROOT}", "run", "--quiet", "smartcard"]
+    }
+  }
+}
